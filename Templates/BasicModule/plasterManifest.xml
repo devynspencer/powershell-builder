@@ -39,6 +39,43 @@
         prompt="Enter the full name of the module author"
         store="text"
         />
+
+    <parameter
+        name="License"
+        type="choice"
+        prompt="Select a license (see http://choosealicense.com):"
+        default="1"
+        store="text"
+        >
+      <choice
+          label="&amp;None"
+          help="No license."
+          value="None"
+          />
+      <choice
+          label="&amp;MIT"
+          help="Adds an MIT license file."
+          value="MIT"
+          />
+    </parameter>
+    <parameter
+        name="Editor"
+        type="choice"
+        prompt="Select an editor for better integration and consistent formatting:"
+        default="0"
+        store="text"
+        >
+      <choice
+          label="&amp;None"
+          help="No editor specified."
+          value="None"
+          />
+      <choice
+          label="Visual Studio &amp;Code"
+          help="Use Visual Studio Code."
+          value="VSCode"
+          />
+    </parameter>
   </parameters>
   <content />
 </plasterManifest>
