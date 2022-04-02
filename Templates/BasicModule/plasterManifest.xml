@@ -1,7 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<plasterManifest
-  schemaVersion="1.1"
-  templateType="Item" xmlns="http://www.microsoft.com/schemas/PowerShell/Plaster/v1">
+<plasterManifest schemaVersion="1.1" templateType="Item" xmlns="http://www.microsoft.com/schemas/PowerShell/Plaster/v1">
   <metadata>
     <name>BasicModule</name>
     <id>2fc4a26d-9404-4b53-8df8-8fbfa674577f</id>
