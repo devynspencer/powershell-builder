@@ -13,6 +13,32 @@
     <author>Devyn Spencer</author>
     <tags>Module, Basic</tags>
   </metadata>
-  <parameters></parameters>
-  <content></content>
+  <parameters>
+    <parameter
+        name="ModuleName"
+        type="text"
+        prompt="Enter the name of the module"
+        />
+
+    <parameter
+        name="ModuleDescription"
+        type="text"
+        prompt="Enter a description of the module"
+        />
+
+    <parameter
+        name="ModuleVersion"
+        type="text"
+        prompt="Enter the starting module version number"
+        default="0.0.0"
+        />
+
+    <parameter
+        name="ModuleAuthor"
+        type="user-fullname"
+        prompt="Enter the full name of the module author"
+        store="text"
+        />
+  </parameters>
+  <content />
 </plasterManifest>
