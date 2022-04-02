@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <plasterManifest
     schemaVersion="1.1"
     templateType="Item"
@@ -58,6 +58,46 @@
           value="MIT"
           />
     </parameter>
+
+    <parameter
+        name="Options"
+        type="multichoice"
+        prompt="Select one or more of the following tooling options:"
+        default="1,2"
+        store="text"
+        >
+      <choice
+          label="&amp;None"
+          help="No tooling options specified."
+          value="None"
+          />
+      <choice
+          label="Add &amp;Git .gitignore file"
+          help="Adds a .gitignore file."
+          value="Git"
+          />
+      <choice
+          label="Add &amp;Pester test support"
+          help="Adds test directory and Pester test for the module manifest file."
+          value="Pester"
+          />
+      <choice
+          label="Add PSScript&amp;Analyzer support"
+          help="Adds script analysis support using PSScriptAnalyzer."
+          value="PSScriptAnalyzer"
+          />
+      <choice
+          label="Add p&amp;sake build script"
+          help="Adds psake build script that generates the module directory for publishing to the PowerShell Gallery."
+          value="psake"
+          />
+      <choice
+          label="Add plat&amp;yPS help generation support"
+          help="Adds help build support using platyPS."
+          value="platyPS"
+          />
+    </parameter>
+
     <parameter
         name="Editor"
         type="choice"
