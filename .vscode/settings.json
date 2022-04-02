@@ -1,4 +1,7 @@
 {
+  "[powershell]": {
+    "editor.tabSize": 4
+  },
   "[xml]": {
     "editor.autoClosingBrackets": "never",
     "editor.tabSize": 2
