@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <plasterManifest
     schemaVersion="1.1"
     templateType="Item"
@@ -38,6 +38,19 @@
         type="user-fullname"
         prompt="Enter the full name of the module author"
         store="text"
+        />
+
+    <parameter
+        name="CompanyName"
+        type="text"
+        prompt="Enter a company/organization name to associate with the module"
+        />
+
+    <parameter
+        name="PowerShellVersion"
+        type="text"
+        prompt="Enter the PowerShell version required by the module"
+        default="5.1"
         />
 
     <parameter
