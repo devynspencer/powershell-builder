@@ -3,13 +3,13 @@
     "editor.tabSize": 2
   },
   "[powershell]": {
+    "editor.defaultFormatter": "ms-vscode.powershell-preview",
     "editor.tabSize": 4
   },
   "[xml]": {
-    "editor.autoClosingBrackets": "never",
+    "editor.defaultFormatter": "redhat.vscode-xml",
     "editor.tabSize": 2
   },
-  "editor.defaultFormatter": "ms-vscode.powershell",
   "editor.formatOnSave": true,
   "editor.insertSpaces": true,
   "editor.tabSize": 4,
@@ -40,11 +40,11 @@
   "powershell.codeFormatting.whitespaceBeforeOpenParen": true,
   "powershell.codeFormatting.whitespaceBetweenParameters": true,
   "powershell.codeFormatting.whitespaceInsideBrace": true,
-  "powershell.enableProfileLoading": false,
+  "powershell.enableProfileLoading": true,
   "powershell.integratedConsole.focusConsoleOnExecute": true,
   "powershell.integratedConsole.showOnStartup": false,
   "powershell.integratedConsole.suppressStartupBanner": true,
-  "powershell.promptToUpdatePowerShell": false,
+  "powershell.promptToUpdatePowerShell": true,
   "powershell.startAutomatically": true,
   "xml.completion.autoCloseTags": true,
   "xml.format.closingBracketNewLine": true,
