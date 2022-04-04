@@ -26,6 +26,12 @@ function Build-Module {
         # New-ModuleManifest parameter
         $PowerShellVersion = '5.1',
 
+        [ValidateSet('None', 'MIT')]
+        $License = 'MIT',
+
+        [ValidateSet('None', 'VSCode')]
+        $Editor = 'VSCode',
+
         [ValidateSet(
             'public',
             'private',
@@ -50,6 +56,10 @@ function Build-Module {
         ModuleAuthor = $Author
         CompanyName = $CompanyName
         PowerShellVersion = $PowerShellVersion
+
+        # Project structure
+        Editor = $Editor
+        License = $License # TODO: should these be passed to Invoke-Plaster only if specified?
         ModuleDirectories = $ModuleDirectories
     }
 
