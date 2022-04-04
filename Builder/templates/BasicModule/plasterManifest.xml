@@ -130,5 +130,24 @@
           />
     </parameter>
   </parameters>
-  <content />
+  <content>
+    <message>Building module [$PLASTER_PARAM_ModuleName] from template [$PLASTER_TemplatePath]</message>
+
+    <newModuleManifest
+        destination="${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}.psd1"
+        rootModule="${PLASTER_PARAM_ModuleName}.psm1"
+        moduleVersion="$PLASTER_PARAM_ModuleVersion"
+        author="$PLASTER_PARAM_ModuleAuthor"
+        companyName="$PLASTER_PARAM_CompanyName"
+        description="$PLASTER_PARAM_ModuleDescription"
+        powerShellVersion="$PLASTER_PARAM_PowerShellVersion"
+        encoding="UTF8-NoBOM"
+        />
+
+    <file
+        source="ModuleName.psm1"
+        destination="${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}.psm1"
+        />
+    <message>Module generated at [$PLASTER_DestinationPath]</message>
+  </content>
 </plasterManifest>
