@@ -24,7 +24,18 @@ function Build-Module {
         $CompanyName,
 
         # New-ModuleManifest parameter
-        $PowerShellVersion
+        $PowerShellVersion = '5.1',
+
+        [ValidateSet(
+            'public',
+            'private',
+            'classes',
+            'lib',
+            'bin',
+            'data',
+            'templates'
+        )]
+        $ModuleDirectories = @('public', 'private')
     )
 
     $PlasterParams = @{
@@ -39,6 +50,7 @@ function Build-Module {
         ModuleAuthor = $Author
         CompanyName = $CompanyName
         PowerShellVersion = $PowerShellVersion
+        ModuleDirectories = $ModuleDirectories
     }
 
     Write-Host -ForegroundColor Cyan "Building module [$ModuleName] at [$DestinationPath] using template [$TemplateName]"

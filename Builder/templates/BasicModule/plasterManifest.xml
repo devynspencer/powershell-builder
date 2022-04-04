@@ -54,6 +54,50 @@
         />
 
     <parameter
+        name="ModuleDirectories"
+        type="multichoice"
+        prompt="Select subdirectories to add to module"
+        default="0,1"
+        store="text"
+        >
+      <choice
+          label="public"
+          help="Include a public (exported) functions directory"
+          value="public"
+          />
+      <choice
+          label="private"
+          help="Include a private (helper) functions directory"
+          value="private"
+          />
+      <choice
+          label="classes"
+          help="Include a classes directory (PowerShell classes require version 5.0 or greater)"
+          value="classes"
+          />
+      <choice
+          label="lib"
+          help="Include an external scripts directory"
+          value="lib"
+          />
+      <choice
+          label="bin"
+          help="Include a binary executables directory"
+          value="bin"
+          />
+      <choice
+          label="data"
+          help="Include a data directory"
+          value="data"
+          />
+      <choice
+          label="templates"
+          help="Include a templates directory"
+          value="templates"
+          />
+    </parameter>
+
+    <parameter
         name="License"
         type="choice"
         prompt="Select a license (see http://choosealicense.com):"
@@ -148,6 +192,52 @@
         source="ModuleName.psm1"
         destination="${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}.psm1"
         />
+
+    <message>Creating module subdirectories: $PLASTER_PARAM_ModuleDirectories</message>
+
+    <file
+        source=""
+        destination="${PLASTER_PARAM_ModuleName}\public"
+        condition="($PLASTER_PARAMS_ModuleDirectories -contains 'public')"
+        />
+
+    <file
+        source=""
+        destination="${PLASTER_PARAM_ModuleName}\private"
+        condition="($PLASTER_PARAMS_ModuleDirectories -contains 'private')"
+        />
+
+    <file
+        source=""
+        destination="${PLASTER_PARAM_ModuleName}\classes"
+        condition="($PLASTER_PARAMS_ModuleDirectories -contains 'classes')"
+        />
+
+    <file
+        source=""
+        destination="${PLASTER_PARAM_ModuleName}\lib"
+        condition="($PLASTER_PARAMS_ModuleDirectories -contains 'lib')"
+        />
+
+    <file
+        source=""
+        destination="${PLASTER_PARAM_ModuleName}\bin"
+        condition="($PLASTER_PARAMS_ModuleDirectories -contains 'bin')"
+        />
+
+    <file
+        source=""
+        destination="${PLASTER_PARAM_ModuleName}\data"
+        condition="($PLASTER_PARAMS_ModuleDirectories -contains 'data')"
+        />
+
+    <file
+        source=""
+        destination="${PLASTER_PARAM_ModuleName}\templates"
+        condition="($PLASTER_PARAMS_ModuleDirectories -contains 'templates')"
+        />
+
+    <message>Creating project files</message>
 
     <templateFile
         source="README.md"
