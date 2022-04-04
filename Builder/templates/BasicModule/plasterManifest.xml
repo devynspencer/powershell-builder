@@ -159,6 +159,12 @@
         destination=""
         />
 
+    <file
+        source="vscode-settings.json"
+        destination=".vscode\settings.json"
+        condition="($PLASTER_PARAMS_Editor -eq 'VSCode')"
+        />
+
     <message>Module generated at [$PLASTER_DestinationPath]</message>
   </content>
 </plasterManifest>
