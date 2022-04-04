@@ -157,6 +157,7 @@
     <templateFile
         source="LICENSE"
         destination=""
+        condition="($PLASTER_PARAMS_License -eq 'MIT')"
         />
 
     <file
