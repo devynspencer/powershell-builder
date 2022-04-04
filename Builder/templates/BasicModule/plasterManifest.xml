@@ -148,6 +148,12 @@
         source="ModuleName.psm1"
         destination="${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}.psm1"
         />
+
+    <templateFile
+        source="LICENSE"
+        destination=""
+        />
+
     <message>Module generated at [$PLASTER_DestinationPath]</message>
   </content>
 </plasterManifest>
