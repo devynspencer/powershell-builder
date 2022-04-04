@@ -150,6 +150,11 @@
         />
 
     <templateFile
+        source="README.md"
+        destination=""
+        />
+
+    <templateFile
         source="LICENSE"
         destination=""
         />
