@@ -1,0 +1,5 @@
+**/Configuration.psd1
+
+temp/files/**
+temp/logs/**
+temp/build/**
