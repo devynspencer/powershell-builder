@@ -23,14 +23,69 @@ Set-StrictMode -Version Latest
 
 $ManifestFile = (Get-PSModuleManifest -Path $BuildRoot)
 $Manifest = Import-PowerShellDataFile -Path $ManifestFile
+$ModuleName = (Get-Item -Path $ManifestFile).BaseName
 $Config = Import-PowerShellDataFile -Path $ConfigurationFile
 
 requires -Variable Manifest, Config
+
+$CredentialParams = @{
+    TypeName = 'System.Management.Automation.PSCredential'
+    ArgumentList = $Config.RegistryUser, (ConvertTo-SecureString -AsPlainText $Config.RegistryToken -Force)
+}
+
+$RegistryCredential = New-Object @CredentialParams
 
 # Synopsis: Purge files from temp directories
 task Clean {
     'build', 'files', 'logs' | ForEach-Object { remove "$BuildRoot\temp\$_\*" }
 }
+
+# Synopsis: Unregister repositories and package sources
+task Unregister {
+    Write-Build Cyan 'Unregistering PowerShellGet repositories and package sources ...'
+
+    foreach ($Registered in @($Config.RepositoryName, $Config.StagingRepositoryName)) {
+        Unregister-PSRepository -Name $Registered -ErrorAction 0 | Out-Null
+        Unregister-PackageSource -Source $Registered -ErrorAction 0 | Out-Null
+    }
+}
+
+# Synopsis: Register repositories and package sources
+task Register Unregister, {
+    # Staging locally allows non-standard attributes to be added to the nuspec,
+    # and is currently necessary to publish to GitHub Packages
+    # - See @cdhunt's response here: https://github.com/PowerShell/PowerShellGet/issues/163
+
+    Write-Build Cyan 'Registering PowerShellGet repositories and package sources ...'
+
+    $StagingParams = @{
+        Name = $Config.StagingRepositoryName
+        SourceLocation = $Config.StagingPath
+    }
+
+    Register-PSRepository @StagingParams -InstallationPolicy 'Trusted'
+
+    $RegistryParams = @{
+        Name = $Config.RepositoryName
+        SourceLocation = $Config.RegistryIndexUri
+        PublishLocation = $Config.RegistryBaseUri
+        Credential = $RegistryCredential
+    }
+
+    Register-PSRepository @RegistryParams -InstallationPolicy 'Trusted'
+}
+
+# Synopsis: Install any missing project module dependencies
+task Modules {
+    $Config.ProjectModules.foreach({ Install-Module @_ })
+
+    Install-Package NuGet
+}
+
+# Synopsis: Remove and reinstall all project module dependencies
+task Reinstall {
+    $Config.ProjectModules.foreach({ Uninstall-Module @_ })
+}, Modules
 
 # Synopsis: Execute Build tasks (avoiding setup if possible)
 task Build {
