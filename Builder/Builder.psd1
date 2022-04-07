@@ -44,6 +44,7 @@
     # Modules that must be imported into the global environment prior to importing this module
     RequiredModules = @(
         'Plaster'
+        'BuildHelpers'
     )
 
     # Assemblies that must be loaded prior to importing this module
@@ -88,6 +89,11 @@
     PrivateData = @{
 
         PSData = @{
+
+            ExternalModuleDependencies = @(
+                'BuildHelpers'
+                'Plaster'
+            )
 
             # Tags applied to this module. These help with module discovery in online galleries.
             Tags = @(
