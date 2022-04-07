@@ -130,6 +130,9 @@ task Build {
 
 }
 
+# Synopsis: Execute build tasks from a new environment
+task Rebuild Clean, Register, Reinstall, Package, Build
+
 # Synopsis: Display directory structure
 task Structure {
     exec { tree /f /a }
