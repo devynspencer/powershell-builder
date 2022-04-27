@@ -34,6 +34,7 @@ Enter-Build {
     $ModuleName = (Get-Item -Path $ManifestFile).BaseName
     $Config = Import-PowerShellDataFile -Path "$BuildRoot\$ConfigurationFile"
     $RegistryUri = "$($Config.RegistryBaseUri)/$($Config.ProjectName)"
+    $PackageLogFilePath = "$($Config.LogPath)\publish-gpr.log"
 
     requires -Variable Manifest, Config
 }

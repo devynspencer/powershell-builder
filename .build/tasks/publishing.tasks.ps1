@@ -8,6 +8,7 @@ task Publish Package, {
 
     $PushParams = @{
         FilePath = 'gpr.exe'
+        RedirectStandardOutput = $PackageLogFilePath
         ArgumentList = @(
             'push',
             '--api-key',
