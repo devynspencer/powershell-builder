@@ -8,7 +8,7 @@ task Package Clean, {
     # - See @cdhunt's response here: https://github.com/PowerShell/PowerShellGet/issues/163
     $PublishParams = @{
         Repository = $Config.StagingRepositoryName
-        Path = "$BuildRoot\$($ModuleName)"
+        Path = "$BuildRoot\$ModuleName"
         NuGetApiKey = $Config.RegistryToken
     }
 
