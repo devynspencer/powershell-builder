@@ -46,22 +46,4 @@ task Build {
 # Synopsis: Execute build tasks from a new environment
 task Rebuild Clean, Register, Reinstall, Package, Build
 
-# Synopsis: Display directory structure
-task ShowDirTree {
-    exec { tree /f /a }
-}
-
-# Synopsis: Display environment configuration data
-task ShowEnvironment {
-    Write-Build Magenta ($Manifest | ConvertTo-Json)
-    Write-Build Cyan ($Config | ConvertTo-Json)
-}
-
-# Synopsis: Watch build logs
-task ShowLastLogs {
-
-}
-
-task Show ShowDirTree, ShowEnvironment, ShowLastLogs
-
 task . Build
