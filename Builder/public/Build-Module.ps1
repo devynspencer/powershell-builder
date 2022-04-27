@@ -24,24 +24,7 @@ function Build-Module {
         $CompanyName,
 
         # New-ModuleManifest parameter
-        $PowerShellVersion = '5.1',
-
-        [ValidateSet('None', 'MIT')]
-        $License = 'MIT',
-
-        [ValidateSet('None', 'VSCode')]
-        $Editor = 'VSCode',
-
-        [ValidateSet(
-            'public',
-            'private',
-            'classes',
-            'lib',
-            'bin',
-            'data',
-            'templates'
-        )]
-        $ModuleDirectories = @('public', 'private')
+        $PowerShellVersion = '5.1'
     )
 
     $PlasterParams = @{
@@ -56,11 +39,6 @@ function Build-Module {
         ModuleAuthor = $Author
         CompanyName = $CompanyName
         PowerShellVersion = $PowerShellVersion
-
-        # Project structure
-        Editor = $Editor
-        License = $License # TODO: should these be passed to Invoke-Plaster only if specified?
-        ModuleDirectories = $ModuleDirectories
     }
 
     Write-Host -ForegroundColor Cyan "Building module [$ModuleName] at [$DestinationPath] using template [$TemplateName]"
