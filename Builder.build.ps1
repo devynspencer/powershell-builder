@@ -37,12 +37,6 @@ Enter-Build {
     requires -Variable Manifest, Config
 }
 
-$CredentialParams = @{
-    TypeName = 'System.Management.Automation.PSCredential'
-    ArgumentList = $Config.RegistryUser, (ConvertTo-SecureString -AsPlainText $Config.RegistryToken -Force)
-}
-
-$RegistryCredential = New-Object @CredentialParams
 
 # Synopsis: Purge files from temp directories
 task Clean {
