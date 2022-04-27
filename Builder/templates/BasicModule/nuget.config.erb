@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <packageSources>
+    <clear />
+    <add
+      key="<%= $PLASTER_PARAM_PackageSourceName %>"
+      value="<%= $PLASTER_PARAM_PackageSourceUri %>"
+      />
+    <add
+      key="<%= $PLASTER_PARAM_PublicPackageSourceName %>"
+      value="<%= $PLASTER_PARAM_PublicPackageSourceUri %>"
+      />
+    <add
+      key="Staging"
+      value="<%= $PLASTER_PARAM_StagingPackageSourcePath %>"
+      />
+  </packageSources>
+  <packageSourceCredentials>
+<%
+  if ($PLASTER_PARAM_GitHubUserName -and $PLASTER_PARAM_GitHubPackagesToken) {
+    @"
+    <github>
+      <add
+        key="Username"
+        value="$PLASTER_PARAM_GitHubUserName"
+        />
+      <add
+        key="ClearTextPassword"
+        value="$PLASTER_PARAM_GitHubPackagesToken"
+        />
+    </github>
+"@
+  }
+%>
+  </packageSourceCredentials>
+</configuration>

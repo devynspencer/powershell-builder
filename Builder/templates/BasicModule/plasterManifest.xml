@@ -156,6 +156,52 @@
     </parameter>
 
     <parameter
+        name="PackageSourceName"
+        type="text"
+        prompt="Enter a name for the production NuGet package source"
+        default="InternalPackages"
+        />
+
+    <parameter
+        name="PackageSourceUri"
+        type="text"
+        prompt="Enter the URI of the production NuGet package source"
+        />
+
+    <parameter
+        name="GitHubUserName"
+        type="text"
+        prompt="Enter a GitHub account name for package registry auth, or specify none to skip. NuGet config env variable syntax permitted, i.e %GITHUB_USERNAME%"
+        />
+
+    <parameter
+        name="GitHubPackagesToken"
+        type="text"
+        prompt="Enter a GitHub account token for package registry auth, or specify none to skip. NuGet config env variable syntax permitted, i.e %GITHUB_PACKAGES_TOKEN%"
+        />
+
+    <parameter
+        name="PublicPackageSourceName"
+        type="text"
+        prompt="Enter a name for the external NuGet package source, or specify none to skip"
+        default="nuget.org"
+        />
+
+    <parameter
+        name="PublicPackageSourceUri"
+        type="text"
+        prompt="Enter the URI of the external NuGet package source, or specify none to skip"
+        default="https://api.nuget.org/v3/index.json"
+        />
+
+    <parameter
+        name="StagingPackageSourcePath"
+        type="text"
+        prompt="Enter the filesystem path for staging NuGet packages prior to publishing"
+        default="temp\staging"
+        />
+
+    <parameter
         name="Editor"
         type="choice"
         prompt="Select an editor for better integration and consistent formatting:"
@@ -255,6 +301,13 @@
         source="vscode-settings.json"
         destination=".vscode\settings.json"
         condition="($PLASTER_PARAMS_Editor -eq 'VSCode')"
+        />
+
+    <message>Creating packaging files</message>
+
+    <templateFile
+        source="nuget.config.erb"
+        destination="nuget.config"
         />
 
     <message>Module generated at [$PLASTER_DestinationPath]</message>
