@@ -124,17 +124,17 @@
         store="text"
         >
       <choice
-          label="None"
+          label="&amp;None"
           help="No tooling options specified."
           value="None"
           />
       <choice
-          label="Add version control tools"
+          label="&amp;Git"
           help="Adds a .gitignore file, a .gitattributes file, and scripted commit hooks."
-          value="Development"
+          value="Git"
           />
       <choice
-          label="Add automated testing tools"
+          label="&amp;Testing"
           help="Adds a tests directory and Pester tests for module manifest, boilerplate, and structure."
           value="Testing"
           />
@@ -144,12 +144,12 @@
           value="Analyzer"
           />
       <choice
-          label="Add build script and support tools"
-          help="Adds an InvokeBuild build script, partial files for build tasks, and helper functions for various build activities."
+          label="&amp;Build"
+          help="Add build script and support tools."
           value="Build"
           />
       <choice
-          label="Add documentation tools"
+          label="&amp;Documentation"
           help="Adds support for generating documentation and external help files using PlatyPS."
           value="Documentation"
           />
