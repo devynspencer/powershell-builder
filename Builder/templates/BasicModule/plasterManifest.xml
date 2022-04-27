@@ -156,29 +156,22 @@
     </parameter>
 
     <parameter
-        name="PackageSourceName"
-        type="text"
-        prompt="Enter a name for the production NuGet package source"
-        default="InternalPackages"
-        />
-
-    <parameter
-        name="PackageSourceUri"
-        type="text"
-        prompt="Enter the URI of the production NuGet package source"
-        />
-
-    <parameter
-        name="GitHubUserName"
-        type="text"
-        prompt="Enter a GitHub account name for package registry auth, or specify none to skip. NuGet config env variable syntax permitted, i.e %GITHUB_USERNAME%"
-        />
-
-    <parameter
-        name="GitHubPackagesToken"
-        type="text"
-        prompt="Enter a GitHub account token for package registry auth, or specify none to skip. NuGet config env variable syntax permitted, i.e %GITHUB_PACKAGES_TOKEN%"
-        />
+        name="PackageRegistry"
+        type="choice"
+        default="1"
+        prompt="Select the type of package registry to publish to"
+        >
+      <choice
+          label="&amp;None"
+          help="No package registry"
+          value="None"
+          />
+      <choice
+          label="&amp;GitHub Packages"
+          help="Publish to the GitHub packages registry"
+          value="GitHub"
+          />
+    </parameter>
 
     <parameter
         name="PublicPackageSourceName"

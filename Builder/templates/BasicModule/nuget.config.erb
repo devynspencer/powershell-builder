@@ -2,35 +2,41 @@
 <configuration>
   <packageSources>
     <clear />
+<%
+  if ($PLASTER_PARAM_PackageRegistry -eq 'GitHub') {
+    @'
     <add
-      key="<%= $PLASTER_PARAM_PackageSourceName %>"
-      value="<%= $PLASTER_PARAM_PackageSourceUri %>"
+      key="github"
+      value="https://nuget.pkg.github.com/%GITHUB_USERNAME%/index.json"
       />
+'@
+}
+%>
     <add
       key="<%= $PLASTER_PARAM_PublicPackageSourceName %>"
       value="<%= $PLASTER_PARAM_PublicPackageSourceUri %>"
       />
     <add
-      key="Staging"
+      key="staging"
       value="<%= $PLASTER_PARAM_StagingPackageSourcePath %>"
       />
   </packageSources>
-  <packageSourceCredentials>
 <%
-  if ($PLASTER_PARAM_GitHubUserName -and $PLASTER_PARAM_GitHubPackagesToken) {
-    @"
+  if ($PLASTER_PARAM_PackageRegistry -eq 'GitHub') {
+    @'
+  <packageSourceCredentials>
     <github>
       <add
         key="Username"
-        value="$PLASTER_PARAM_GitHubUserName"
+        value="%GITHUB_USERNAME%"
         />
       <add
         key="ClearTextPassword"
-        value="$PLASTER_PARAM_GitHubPackagesToken"
+        value="%GITHUB_PACKAGES_TOKEN%"
         />
     </github>
-"@
+  </packageSourceCredentials>
+'@
   }
 %>
-  </packageSourceCredentials>
 </configuration>
