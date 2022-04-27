@@ -120,7 +120,7 @@
         name="Options"
         type="multichoice"
         prompt="Select one or more of the following tooling options:"
-        default="1,2"
+        default="1,2,4"
         store="text"
         >
       <choice
@@ -139,9 +139,9 @@
           value="Testing"
           />
       <choice
-          label="Add code linting tools"
+          label="&amp;Analyzer"
           help="Adds script analysis support using PSScriptAnalyzer."
-          value="Linting"
+          value="Analyzer"
           />
       <choice
           label="Add build script and support tools"
@@ -295,6 +295,12 @@
         source="LICENSE"
         destination=""
         condition="($PLASTER_PARAMS_License -eq 'MIT')"
+        />
+
+    <templateFile
+        source="ScriptAnalyzerSettings.psd1"
+        destination=""
+        condition="$PLASTER_PARAM_Options -contains 'Analyzer'"
         />
 
     <file
