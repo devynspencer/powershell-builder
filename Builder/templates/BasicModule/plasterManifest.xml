@@ -245,43 +245,43 @@
     <file
         source=""
         destination="${PLASTER_PARAM_ModuleName}\public"
-        condition="($PLASTER_PARAMS_ModuleDirectories -contains 'public')"
+        condition="$PLASTER_PARAM_ModuleDirectories -contains 'public'"
         />
 
     <file
         source=""
         destination="${PLASTER_PARAM_ModuleName}\private"
-        condition="($PLASTER_PARAMS_ModuleDirectories -contains 'private')"
+        condition="$PLASTER_PARAM_ModuleDirectories -contains 'private'"
         />
 
     <file
         source=""
         destination="${PLASTER_PARAM_ModuleName}\classes"
-        condition="($PLASTER_PARAMS_ModuleDirectories -contains 'classes')"
+        condition="$PLASTER_PARAM_ModuleDirectories -contains 'classes'"
         />
 
     <file
         source=""
         destination="${PLASTER_PARAM_ModuleName}\lib"
-        condition="($PLASTER_PARAMS_ModuleDirectories -contains 'lib')"
+        condition="$PLASTER_PARAM_ModuleDirectories -contains 'lib'"
         />
 
     <file
         source=""
         destination="${PLASTER_PARAM_ModuleName}\bin"
-        condition="($PLASTER_PARAMS_ModuleDirectories -contains 'bin')"
+        condition="$PLASTER_PARAM_ModuleDirectories -contains 'bin'"
         />
 
     <file
         source=""
         destination="${PLASTER_PARAM_ModuleName}\data"
-        condition="($PLASTER_PARAMS_ModuleDirectories -contains 'data')"
+        condition="$PLASTER_PARAM_ModuleDirectories -contains 'data'"
         />
 
     <file
         source=""
         destination="${PLASTER_PARAM_ModuleName}\templates"
-        condition="($PLASTER_PARAMS_ModuleDirectories -contains 'templates')"
+        condition="$PLASTER_PARAM_ModuleDirectories -contains 'templates'"
         />
 
     <message>Creating project files</message>
@@ -294,7 +294,7 @@
     <templateFile
         source="LICENSE"
         destination=""
-        condition="($PLASTER_PARAMS_License -eq 'MIT')"
+        condition="$PLASTER_PARAM_License -eq 'MIT'"
         />
 
     <templateFile
@@ -306,7 +306,7 @@
     <file
         source="vscode-settings.json"
         destination=".vscode\settings.json"
-        condition="($PLASTER_PARAMS_Editor -eq 'VSCode')"
+        condition="$PLASTER_PARAM_Editor -eq 'VSCode'"
         />
 
     <message>Creating packaging files</message>
