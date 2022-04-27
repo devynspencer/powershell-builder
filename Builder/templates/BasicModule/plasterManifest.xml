@@ -61,37 +61,37 @@
         store="text"
         >
       <choice
-          label="public"
+          label="p&amp;ublic"
           help="Include a public (exported) functions directory"
           value="public"
           />
       <choice
-          label="private"
+          label="p&amp;rivate"
           help="Include a private (helper) functions directory"
           value="private"
           />
       <choice
-          label="classes"
+          label="&amp;classes"
           help="Include a classes directory (PowerShell classes require version 5.0 or greater)"
           value="classes"
           />
       <choice
-          label="lib"
+          label="&amp;lib"
           help="Include an external scripts directory"
           value="lib"
           />
       <choice
-          label="bin"
+          label="&amp;bin"
           help="Include a binary executables directory"
           value="bin"
           />
       <choice
-          label="data"
+          label="&amp;data"
           help="Include a data directory"
           value="data"
           />
       <choice
-          label="templates"
+          label="&amp;templates"
           help="Include a templates directory"
           value="templates"
           />
@@ -105,12 +105,12 @@
         store="text"
         >
       <choice
-          label="None"
+          label="&amp;None"
           help="No license."
           value="None"
           />
       <choice
-          label="MIT"
+          label="&amp;MIT"
           help="Adds an MIT license file."
           value="MIT"
           />
@@ -209,12 +209,12 @@
         store="text"
         >
       <choice
-          label="None"
+          label="&amp;None"
           help="No editor specified."
           value="None"
           />
       <choice
-          label="Visual Studio Code"
+          label="&amp;Visual Studio Code"
           help="Use Visual Studio Code."
           value="VSCode"
           />
