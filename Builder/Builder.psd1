@@ -47,6 +47,7 @@
         @{ ModuleName = 'InvokeBuild'; ModuleVersion = '5.9.9.0' }
         @{ ModuleName = 'Pester'; ModuleVersion = '5.3.1' }
         @{ ModuleName = 'Plaster'; ModuleVersion = '1.1.3' }
+        @{ ModuleName = 'PSScriptAnalyzer'; ModuleVersion = '1.20.0' }
     )
 
     # Assemblies that must be loaded prior to importing this module
@@ -97,6 +98,7 @@
                 'InvokeBuild'
                 'Pester'
                 'Plaster'
+                'PSScriptAnalyzer'
             )
 
             # Tags applied to this module. These help with module discovery in online galleries.
