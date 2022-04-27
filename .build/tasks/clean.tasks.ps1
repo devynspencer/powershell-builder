@@ -2,5 +2,5 @@
 task Clean {
     Write-Build -Color Cyan 'Performing cleanup activities'
 
-    'build', 'files', 'logs' | ForEach-Object { remove "$BuildRoot\temp\$_\*" }
+    'build', 'files', 'logs', 'reports' | ForEach-Object { remove "$BuildRoot\temp\$_\*" }
 }
