@@ -105,12 +105,12 @@
         store="text"
         >
       <choice
-          label="&amp;None"
+          label="None"
           help="No license."
           value="None"
           />
       <choice
-          label="&amp;MIT"
+          label="MIT"
           help="Adds an MIT license file."
           value="MIT"
           />
@@ -209,12 +209,12 @@
         store="text"
         >
       <choice
-          label="&amp;None"
+          label="None"
           help="No editor specified."
           value="None"
           />
       <choice
-          label="Visual Studio &amp;Code"
+          label="Visual Studio Code"
           help="Use Visual Studio Code."
           value="VSCode"
           />
