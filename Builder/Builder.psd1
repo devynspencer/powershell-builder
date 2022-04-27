@@ -94,6 +94,8 @@
 
             ExternalModuleDependencies = @(
                 'BuildHelpers'
+                'InvokeBuild'
+                'Pester'
                 'Plaster'
             )
 
