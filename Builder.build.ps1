@@ -38,11 +38,6 @@ Enter-Build {
 }
 
 
-# Synopsis: Purge files from temp directories
-task Clean {
-    'build', 'files', 'logs' | ForEach-Object { remove "$BuildRoot\temp\$_\*" }
-}
-
 # Synopsis: Unregister repositories and package sources
 task Unregister {
     Write-Build Cyan 'Unregistering PowerShellGet repositories and package sources ...'
