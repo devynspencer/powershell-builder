@@ -11,6 +11,10 @@
     "editor.defaultFormatter": "redhat.vscode-xml",
     "editor.tabSize": 2
   },
+  "[erb]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "rebornix.ruby",
+  },
   "editor.formatOnSave": true,
   "editor.insertSpaces": true,
   "editor.tabSize": 4,
