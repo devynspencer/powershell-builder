@@ -1,7 +1,10 @@
 # Synopsis: Perform all publishing tasks
 task Publish Package, {
-    $script:RegistryUri = "$($Config.RegistryBaseUri)\$($Config.ProjectName)"
-    Write-Build Cyan "Deploying package to [$RegistryUri]"
+    $script:RepositoryBaseUri = "https://github.com/$($Config.RegistryUser)"
+    $script:RepositoryUri = "$RepositoryBaseUri/$($Config.ProjectName)"
+    $script:PackageFilePath = Join-Path -Path $PackagePath -ChildPath $PackageFileName
+
+    Write-Build Cyan "Deploying package [$PackageFileName] to [$RepositoryUri]"
 
     $PushParams = @{
         FilePath = 'gpr.exe'
@@ -10,8 +13,8 @@ task Publish Package, {
             '--api-key',
             $Config.RegistryToken,
             '--repository',
-            $RegistryUri,
-            (Join-Path -Path $PackagePath -ChildPath $PackageFileName)
+            $RepositoryUri,
+            $PackageFilePath
         )
     }
 

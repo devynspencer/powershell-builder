@@ -33,6 +33,7 @@ Enter-Build {
     $Manifest = Import-PowerShellDataFile -Path $ManifestFile
     $ModuleName = (Get-Item -Path $ManifestFile).BaseName
     $Config = Import-PowerShellDataFile -Path "$BuildRoot\$ConfigurationFile"
+    $RegistryUri = "$($Config.RegistryBaseUri)/$($Config.ProjectName)"
 
     requires -Variable Manifest, Config
 }
