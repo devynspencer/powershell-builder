@@ -124,34 +124,34 @@
         store="text"
         >
       <choice
-          label="&amp;None"
+          label="None"
           help="No tooling options specified."
           value="None"
           />
       <choice
-          label="Add &amp;Git .gitignore file"
-          help="Adds a .gitignore file."
-          value="Git"
+          label="Add version control tools"
+          help="Adds a .gitignore file, a .gitattributes file, and scripted commit hooks."
+          value="Development"
           />
       <choice
-          label="Add &amp;Pester test support"
-          help="Adds test directory and Pester test for the module manifest file."
-          value="Pester"
+          label="Add automated testing tools"
+          help="Adds a tests directory and Pester tests for module manifest, boilerplate, and structure."
+          value="Testing"
           />
       <choice
-          label="Add PSScript&amp;Analyzer support"
+          label="Add code linting tools"
           help="Adds script analysis support using PSScriptAnalyzer."
-          value="PSScriptAnalyzer"
+          value="Linting"
           />
       <choice
-          label="Add p&amp;sake build script"
-          help="Adds psake build script that generates the module directory for publishing to the PowerShell Gallery."
-          value="psake"
+          label="Add build script and support tools"
+          help="Adds an InvokeBuild build script, partial files for build tasks, and helper functions for various build activities."
+          value="Build"
           />
       <choice
-          label="Add plat&amp;yPS help generation support"
-          help="Adds help build support using platyPS."
-          value="platyPS"
+          label="Add documentation tools"
+          help="Adds support for generating documentation and external help files using PlatyPS."
+          value="Documentation"
           />
     </parameter>
 
@@ -237,7 +237,7 @@
 
     <file
         source="ModuleName.psm1"
-        destination="${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}.psm1"
+        destination="${PLASTER_PARAM_ModuleName}.psm1"
         />
 
     <message>Creating module subdirectories: $PLASTER_PARAM_ModuleDirectories</message>
