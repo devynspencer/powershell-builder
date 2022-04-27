@@ -74,7 +74,7 @@ task Register Unregister, {
 }
 
 # Synopsis: Install any missing project module dependencies
-task Modules {
+task Install {
     $Config.ProjectModules.foreach({ Install-Module @_ })
 
     Install-Package NuGet
@@ -83,7 +83,7 @@ task Modules {
 # Synopsis: Remove and reinstall all project module dependencies
 task Reinstall {
     $Config.ProjectModules.foreach({ Uninstall-Module @_ })
-}, Modules
+}, Install
 
 # Synopsis: Publish module to local staging repository
 task Package Clean, {
