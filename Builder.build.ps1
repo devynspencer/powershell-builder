@@ -32,7 +32,7 @@ Enter-Build {
     $ManifestFile = (Get-PSModuleManifest -Path $BuildRoot)
     $Manifest = Import-PowerShellDataFile -Path $ManifestFile
     $ModuleName = (Get-Item -Path $ManifestFile).BaseName
-    $Config = Import-PowerShellDataFile -Path $ConfigurationFile
+    $Config = Import-PowerShellDataFile -Path "$BuildRoot\$ConfigurationFile"
 
     requires -Variable Manifest, Config
 }
