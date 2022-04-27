@@ -14,4 +14,13 @@ task ShowLastLogs {
 
 }
 
+# Synopsis: Display all logs
+task ShowLogs ShowPackageLog
+
+# Synopsis: Display packaging log
+task ShowPackageLog {
+    Write-Build Magenta "Displaying logs from [$PackageLogFilePath]"
+    Write-Build DarkMagenta (Get-Content -Raw $PackageLogFilePath)
+}
+
 task Debug ShowDirTree, ShowEnvironment, ShowLastLogs
