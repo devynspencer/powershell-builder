@@ -27,12 +27,15 @@ Set-StrictMode -Version Latest
 $BuildHelpers = Import-BuildPartial -Path "$BuildRoot\.build\helpers"
 $BuildTasks = Import-BuildPartial -Path "$BuildRoot\.build\tasks" -Suffix '*.tasks.ps1'
 
-$ManifestFile = (Get-PSModuleManifest -Path $BuildRoot)
-$Manifest = Import-PowerShellDataFile -Path $ManifestFile
-$ModuleName = (Get-Item -Path $ManifestFile).BaseName
-$Config = Import-PowerShellDataFile -Path $ConfigurationFile
+# Establish build properties
+Enter-Build {
+    $ManifestFile = (Get-PSModuleManifest -Path $BuildRoot)
+    $Manifest = Import-PowerShellDataFile -Path $ManifestFile
+    $ModuleName = (Get-Item -Path $ManifestFile).BaseName
+    $Config = Import-PowerShellDataFile -Path $ConfigurationFile
 
-requires -Variable Manifest, Config
+    requires -Variable Manifest, Config
+}
 
 $CredentialParams = @{
     TypeName = 'System.Management.Automation.PSCredential'
