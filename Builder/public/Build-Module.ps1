@@ -42,7 +42,6 @@ function Build-Module {
     }
 
     Write-Host -ForegroundColor Cyan "Building module [$ModuleName] at [$DestinationPath] using template [$TemplateName]"
-    Write-Host -ForgeoundColor DarkCyan "Using build configuration:`n`n$(ConvertTo-Json $PlasterParams)"
 
     Invoke-Plaster @PlasterParams
 }
