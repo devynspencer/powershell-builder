@@ -20,6 +20,6 @@ $PSDefaultParameterValues = @{
     "Build-Module:GitHubPackagesToken" = "%GITHUB_PACKAGES_TOKEN%"
     "Build-Module:PackageSourceName" = "Internal"
     "Build-Module:PackageSourceUri" = "https://nuget.pkg.github.com/%GITHUB_USERNAME%/index.json"
-    "Build-Module:StagingPackageSourcePath" = "temp\staging"
+    "Build-Module:StagingPackageSourcePath" = "temp\output"
 }
 ```

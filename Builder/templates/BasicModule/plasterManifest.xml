@@ -191,7 +191,7 @@
         name="StagingPackageSourcePath"
         type="text"
         prompt="Enter the filesystem path for staging NuGet packages prior to publishing"
-        default="temp\build"
+        default="temp\output"
         />
 
     <parameter
