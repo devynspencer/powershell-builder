@@ -40,5 +40,3 @@ Enter-Build {
 
     requires -Variable Manifest, Config
 }
-
-task . Build
