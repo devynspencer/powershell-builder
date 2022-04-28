@@ -5,6 +5,5 @@ task Credentials {
         ArgumentList = $Config.RegistryUser, (ConvertTo-SecureString -AsPlainText $Config.RegistryToken -Force)
     }
 
-
     $script:RegistryCredential = New-Object @CredentialParams
 }

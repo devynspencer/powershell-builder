@@ -21,11 +21,13 @@ param (
 
 Set-StrictMode -Version Latest
 
-# Load build elements from partial files
-. "$PSScriptRoot\.build\helpers\Import-BuildPartial.ps1"
+# Load build tasks from separate module
+# https://github.com/nightroman/Invoke-Build/tree/master/Tasks/Import
+Import-Module Builder -Force
 
-$null = Import-BuildPartial -Path "$BuildRoot\.build\helpers"
-$null = Import-BuildPartial -Path "$BuildRoot\.build\tasks" -Suffix '*.tasks.ps1'
+foreach ($TaskFile in (Get-Command '*.tasks' -Module 'Builder')) {
+    . $TaskFile
+}
 
 # Establish build properties
 Enter-Build {
