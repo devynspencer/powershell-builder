@@ -86,15 +86,3 @@ Import-Module Builder -Force
 foreach ($TaskFile in (Get-Command '*.tasks' -Module 'Builder')) {
     . $TaskFile
 }
-
-# Establish build properties
-Enter-Build {
-    $ManifestFile = (Get-PSModuleManifest -Path $BuildRoot)
-    $Manifest = Import-PowerShellDataFile -Path $ManifestFile
-    $ModuleName = (Get-Item -Path $ManifestFile).BaseName
-    $Config = Import-PowerShellDataFile -Path "$BuildRoot\$ConfigurationFile"
-    $RegistryUri = "$($Config.RegistryBaseUri)/$($Config.ProjectName)"
-    $PackageLogFilePath = "$($Config.LogPath)\publish-gpr.log"
-
-    requires -Variable Manifest, Config
-}
