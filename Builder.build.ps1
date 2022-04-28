@@ -69,6 +69,13 @@ $BuilderEnv = [ordered] @{
 
     Publish = @{
 
+        OrgRepo = @{
+            Name = 'Org'
+            SourceUri = $env:BUILDER_ORG_REGISTRY_SOURCE_URI
+            PublishUri = $env:BUILDER_ORG_REGISTRY_PUBLISH_URI
+            SearchUri = $env:BUILDER_ORG_REGISTRY_SEARCH_URI
+            ApiKey = $env:BUILDER_ORG_REGISTRY_API_KEY
+        }
     }
 }
 
