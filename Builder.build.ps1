@@ -50,6 +50,11 @@ $BuilderEnv = [ordered] @{
 
     Publish = @{
 
+        LocalStagingRepo = @{
+            Name = 'LocalStaging'
+            SourcePath = $env:BUILDER_STAGING_REPOSITORY_PATH
+        }
+
         OrgRepo = @{
             Name = 'Org'
             SourceUri = $env:BUILDER_ORG_REGISTRY_SOURCE_URI
