@@ -1,8 +1,15 @@
 # Synopsis: Purge files from temp directories
 task CleanTemp {
-    Write-Build -Color Cyan 'Performing cleanup activities'
+    $TempDir = [IO.Path]::Combine($BuilderEnv.General.ProjectRoot, 'temp')
 
-    'output', 'files', 'logs', 'reports' | ForEach-Object { remove "$BuildRoot\temp\$_\*" }
+    $Subdirs = @(
+        $BuilderEnv.Build.OutDir
+        $BuilderEnv.Build.LogDir
+        $BuilderEnv.Build.ReportDir
+    )
+
+    Write-Build -Color Cyan "Purging files from [$TempDir]"
+    $Subdirs.foreach({ remove "$_\*" })
 }
 
 # Synopsis: Purge files from local staging directory
