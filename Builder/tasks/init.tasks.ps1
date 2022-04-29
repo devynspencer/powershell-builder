@@ -10,4 +10,15 @@ task InitTemp {
     $null = New-Item @NewDirParams -Path $BuilderEnv.Build.ReportDir
 }
 
-task Init InitTemp
+task InitLocalStagingDir {
+    $NewDirParams = @{
+        Force = $true
+        ErrorAction = 'SilentlyContinue'
+        ItemType = 'Directory'
+        Path = $BuilderEnv.Publish.LocalStagingRepo.SourcePath
+    }
+
+    $null = New-Item @NewDirParams
+}
+
+task Init InitTemp, InitLocalStagingDir
