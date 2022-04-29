@@ -15,15 +15,14 @@ task RegisterPublicRepo UnregisterPublicRepo, {
     # Staging locally allows non-standard attributes to be added to the nuspec,
     # and is currently necessary to publish to GitHub Packages
     # - See @cdhunt's response here: https://github.com/PowerShell/PowerShellGet/issues/163
-
-    Write-Build Cyan 'Registering PowerShellGet repositories and package sources ...'
-
     $StagingParams = @{
         Name = $Config.StagingRepositoryName
         SourceLocation = $Config.StagingPath
     }
 
     Register-PSRepository @StagingParams -InstallationPolicy 'Trusted'
+
+    Write-Build Cyan 'Registering public PowerShellGet repositories and package sources ...'
 
     $RegistryParams = @{
         Name = $Config.RepositoryName
@@ -36,7 +35,8 @@ task RegisterPublicRepo UnregisterPublicRepo, {
 }
 
 # Synopsis: Register internal PSRepository
-task RegisterOrgRepo {
+    Write-Build Cyan 'Registering internal PowerShellGet repositories and package sources ...'
+
     $RegisterParams = @{
         Name = $BuilderEnv.Publish.OrgRepo.Name
         SourceLocation = $BuilderEnv.Publish.OrgRepo.SourceUri
@@ -49,6 +49,7 @@ task RegisterOrgRepo {
 
 # Synopsis: Remove internal PSRepository
 task UnregisterOrgRepo {
+    Write-Build Cyan 'Unregistering internal PowerShellGet repositories and package sources ...'
     Unregister-PSRepository -Name $BuilderEnv.Publish.OrgRepo.Name
 }
 
