@@ -35,6 +35,7 @@ task RegisterPublicRepo UnregisterPublicRepo, {
 }
 
 # Synopsis: Register internal PSRepository
+task RegisterOrgRepo UnregisterOrgRepo, {
     Write-Build Cyan 'Registering internal PowerShellGet repositories and package sources ...'
 
     $RegisterParams = @{
