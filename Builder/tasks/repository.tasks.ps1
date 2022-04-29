@@ -1,5 +1,5 @@
 # Synopsis: Register local repositories and package sources
-task RegisterLocalStagingRepo {
+task RegisterLocalStagingRepo UnregisterLocalStagingRepo, {
     Write-Build Cyan 'Registering local staging PowerShellGet repositories and package sources ...'
 
     # Staging locally allows non-standard attributes to be added to the nuspec,
