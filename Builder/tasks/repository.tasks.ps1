@@ -65,7 +65,7 @@ task ShowOrgPackages {
 }
 
 # Synopsis: Unregister all PSRepositories
-task Unregister UnregisterOrgRepo, UnregisterPublicRepo
+task Unregister UnregisterOrgRepo
 
 # Synopsis: Register all PSRepositories
-task Register RegisterOrgRepo, RegisterPublicRepo
+task Register RegisterOrgRepo
