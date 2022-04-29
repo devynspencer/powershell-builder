@@ -11,7 +11,8 @@ task ShowLocalStagingDirTree {
 
 # Synopsis: Display environment configuration data
 task ShowEnvironment {
-    Write-Build Magenta "`nDebug [BuildEnv?]: build environment"
+    Write-Build Magenta "`nDebug [BuilderEnv]: build environment"
+
     $EnvironmentVariables = @(
         'GITHUB_USERNAME'
         'GITHUB_PACKAGES_TOKEN'
