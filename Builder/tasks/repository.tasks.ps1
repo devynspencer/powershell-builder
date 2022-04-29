@@ -13,7 +13,18 @@ task RegisterLocalStagingRepo InitLocalStagingDir, UnregisterLocalStagingRepo, {
     Register-PSRepository @StagingParams -InstallationPolicy 'Trusted'
 }
 
-task UnregisterLocalStagingRepo {
+# Skip unregister tasks if no PSRepository found
+$UnregisterLocalStagingCondition = {
+    $Result = $false
+
+    if (Get-PSRepository -Name $BuilderEnv.Publish.LocalStagingRepo.Name -EA 0) {
+        $Result = $true
+    }
+
+    $Result
+}
+
+task UnregisterLocalStagingRepo -If (. $UnregisterLocalStagingCondition) {
     Write-Build Cyan 'Unregistering local staging PowerShellGet repositories and package sources ...'
     Unregister-PSRepository -Name $BuilderEnv.Publish.LocalStagingRepo.Name
 }
@@ -31,8 +42,19 @@ task RegisterOrgRepo UnregisterOrgRepo, {
     Register-PSRepository @RegisterParams -InstallationPolicy 'Trusted'
 }
 
+# Skip unregister tasks if no PSRepository found
+$UnregisterOrgRepoCondition = {
+    $Result = $false
+
+    if (Get-PSRepository -Name $BuilderEnv.Publish.OrgRepo.Name -EA 0) {
+        $Result = $true
+    }
+
+    $Result
+}
+
 # Synopsis: Remove internal PSRepository
-task UnregisterOrgRepo {
+task UnregisterOrgRepo -If (. $UnregisterOrgRepoCondition) {
     Write-Build Cyan 'Unregistering internal PowerShellGet repositories and package sources ...'
     Unregister-PSRepository -Name $BuilderEnv.Publish.OrgRepo.Name
 }
