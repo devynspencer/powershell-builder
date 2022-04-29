@@ -1,5 +1,11 @@
-# Synopsis: Display directory structure
-task ShowDirTree {
+# Synopsis: Display project directory structure
+task ShowProjectDirTree {
+    exec { tree /f /a }
+}
+
+# Synopsis: Display local staging directory structure
+task ShowLocalStagingDirTree {
+    Set-Location -Path $BuilderEnv.Publish.LocalStagingRepo.SourcePath
     exec { tree /f /a }
 }
 
@@ -30,4 +36,4 @@ task ShowLogs {
 }
 
 # Synopsis: Execute basic debug tasks
-task Debug ShowDirTree, ShowEnvironment
+task Debug ShowProjectDirTree, ShowLocalStagingDirTree, ShowEnvironment
