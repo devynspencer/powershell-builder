@@ -9,7 +9,7 @@ task Unregister {
 }
 
 # Synopsis: Register repositories and package sources
-task Register Unregister, Credentials, {
+task Register Unregister, {
     # Staging locally allows non-standard attributes to be added to the nuspec,
     # and is currently necessary to publish to GitHub Packages
     # - See @cdhunt's response here: https://github.com/PowerShell/PowerShellGet/issues/163
