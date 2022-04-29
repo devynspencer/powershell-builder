@@ -24,6 +24,7 @@ $UnregisterLocalStagingCondition = {
     $Result
 }
 
+# Synopsis: Remove local staging PSRepository
 task UnregisterLocalStagingRepo -If (. $UnregisterLocalStagingCondition) {
     Write-Build Cyan 'Unregistering local staging PowerShellGet repositories and package sources ...'
     Unregister-PSRepository -Name $BuilderEnv.Publish.LocalStagingRepo.Name
