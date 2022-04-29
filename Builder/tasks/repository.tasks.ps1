@@ -16,8 +16,8 @@ task RegisterPublicRepo UnregisterPublicRepo, {
     # and is currently necessary to publish to GitHub Packages
     # - See @cdhunt's response here: https://github.com/PowerShell/PowerShellGet/issues/163
     $StagingParams = @{
-        Name = $Config.StagingRepositoryName
-        SourceLocation = $Config.StagingPath
+        Name = $BuilderEnv.Publish.LocalStagingRepo.Name
+        SourceLocation = $BuilderEnv.Publish.LocalStagingRepo.SourcePath
     }
 
     Register-PSRepository @StagingParams -InstallationPolicy 'Trusted'
