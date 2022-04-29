@@ -1,6 +1,6 @@
 # Synopsis: Unregister repositories and package sources
-task Unregister {
-    Write-Build Cyan 'Unregistering PowerShellGet repositories and package sources ...'
+task UnregisterPublicRepo {
+    Write-Build Cyan 'Unregistering public PowerShellGet repositories and package sources ...'
 
     foreach ($Registered in @($Config.RepositoryName, $Config.StagingRepositoryName)) {
         Unregister-PSRepository -Name $Registered -ErrorAction 0 | Out-Null
@@ -9,7 +9,9 @@ task Unregister {
 }
 
 # Synopsis: Register repositories and package sources
-task Register Unregister, {
+task RegisterPublicRepo UnregisterPublicRepo, {
+    Write-Build Cyan 'Registering local PowerShellGet repositories and package sources ...'
+
     # Staging locally allows non-standard attributes to be added to the nuspec,
     # and is currently necessary to publish to GitHub Packages
     # - See @cdhunt's response here: https://github.com/PowerShell/PowerShellGet/issues/163
