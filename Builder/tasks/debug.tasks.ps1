@@ -5,12 +5,6 @@ task ShowDirTree {
 
 # Synopsis: Display environment configuration data
 task ShowEnvironment {
-    Write-Build Magenta "`nDebug [Manifest]: module manifest"
-    Write-Build DarkMagenta ($Manifest | ConvertTo-Json)
-
-    Write-Build Magenta "`nDebug [Config]: project configuration"
-    Write-Build DarkMagenta ($Config | ConvertTo-Json)
-
     Write-Build Magenta "`nDebug [BuildEnv?]: build environment"
     $EnvironmentVariables = @(
         'GITHUB_USERNAME'
