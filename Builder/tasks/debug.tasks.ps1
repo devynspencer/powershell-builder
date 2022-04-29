@@ -31,6 +31,7 @@ task ShowEnvironment {
         }
 
         else {
+            # Highlight undefined environment vars
             Write-Build Red "[$Var]:"
         }
     }
