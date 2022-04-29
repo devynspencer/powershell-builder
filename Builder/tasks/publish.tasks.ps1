@@ -1,3 +1,14 @@
+# Synopsis: Publish to local staging package registry
+task PublishLocalStaging CleanLocalStaging, RegisterLocalStagingRepo, {
+    $PublishParams = @{
+        Path = $BuilderEnv.General.SrcRootDir
+        Repository = $BuilderEnv.Publish.LocalStagingRepo.Name
+    }
+
+    Publish-Module @PublishParams
+}
+
+
 # Synopsis: Publish to internal package registry
 task PublishOrg {
     $PublishParams = @{
@@ -10,4 +21,4 @@ task PublishOrg {
 }
 
 # Synopsis: Publish to all package registries
-task Publish PublishOrg
+task Publish PublishOrg, PublishLocalStaging
