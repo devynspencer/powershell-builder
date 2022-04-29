@@ -1,16 +1,6 @@
-# Synopsis: Unregister repositories and package sources
-task UnregisterPublicRepo {
-    Write-Build Cyan 'Unregistering public PowerShellGet repositories and package sources ...'
-
-    foreach ($Registered in @($Config.RepositoryName, $Config.StagingRepositoryName)) {
-        Unregister-PSRepository -Name $Registered -ErrorAction 0 | Out-Null
-        Unregister-PackageSource -Source $Registered -ErrorAction 0 | Out-Null
-    }
-}
-
-# Synopsis: Register repositories and package sources
-task RegisterPublicRepo UnregisterPublicRepo, {
-    Write-Build Cyan 'Registering local PowerShellGet repositories and package sources ...'
+# Synopsis: Register local repositories and package sources
+task RegisterLocalStagingRepo {
+    Write-Build Cyan 'Registering local staging PowerShellGet repositories and package sources ...'
 
     # Staging locally allows non-standard attributes to be added to the nuspec,
     # and is currently necessary to publish to GitHub Packages
@@ -21,17 +11,11 @@ task RegisterPublicRepo UnregisterPublicRepo, {
     }
 
     Register-PSRepository @StagingParams -InstallationPolicy 'Trusted'
+}
 
-    Write-Build Cyan 'Registering public PowerShellGet repositories and package sources ...'
-
-    $RegistryParams = @{
-        Name = $Config.RepositoryName
-        SourceLocation = $Config.RegistryIndexUri
-        PublishLocation = $Config.RegistryBaseUri
-        Credential = $RegistryCredential
-    }
-
-    Register-PSRepository @RegistryParams -InstallationPolicy 'Trusted'
+task UnregisterLocalStagingRepo {
+    Write-Build Cyan 'Unregistering local staging PowerShellGet repositories and package sources ...'
+    Unregister-PSRepository -Name $BuilderEnv.Publish.LocalStagingRepo.Name
 }
 
 # Synopsis: Register internal PSRepository
