@@ -8,7 +8,6 @@ task PublishLocalStaging CleanLocalStaging, RegisterLocalStagingRepo, {
     Publish-Module @PublishParams
 }
 
-
 # Synopsis: Publish to internal package registry
 task PublishOrg RegisterOrgRepo, {
     $PublishParams = @{
