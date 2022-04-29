@@ -15,6 +15,11 @@ task ShowEnvironment {
     $EnvironmentVariables = @(
         'GITHUB_USERNAME'
         'GITHUB_PACKAGES_TOKEN'
+        'BUILDER_ORG_REGISTRY_API_KEY'
+        'BUILDER_ORG_REGISTRY_PUBLISH_URI'
+        'BUILDER_ORG_REGISTRY_SEARCH_URI'
+        'BUILDER_ORG_REGISTRY_SOURCE_URI'
+        'BUILDER_STAGING_REPOSITORY_PATH'
     )
 
     foreach ($Var in $EnvironmentVariables) {
