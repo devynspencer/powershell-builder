@@ -10,7 +10,7 @@ task PublishLocalStaging CleanLocalStaging, RegisterLocalStagingRepo, {
 
 
 # Synopsis: Publish to internal package registry
-task PublishOrg {
+task PublishOrg RegisterOrgRepo, {
     $PublishParams = @{
         Path = $BuilderEnv.General.SrcRootDir
         NuGetApiKey = $BuilderEnv.Publish.OrgRepo.ApiKey
