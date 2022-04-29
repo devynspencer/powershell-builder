@@ -26,10 +26,9 @@ task RegisterOrgRepo UnregisterOrgRepo, {
         Name = $BuilderEnv.Publish.OrgRepo.Name
         SourceLocation = $BuilderEnv.Publish.OrgRepo.SourceUri
         PublishLocation = $BuilderEnv.Publish.OrgRepo.PublishUri
-        InstallationPolicy = 'Trusted'
     }
 
-    Register-PSRepository @RegisterParams
+    Register-PSRepository @RegisterParams -InstallationPolicy 'Trusted'
 }
 
 # Synopsis: Remove internal PSRepository
