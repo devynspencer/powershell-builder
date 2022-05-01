@@ -230,7 +230,7 @@
 
     <file
         source="ModuleName.psm1"
-        destination="${PLASTER_PARAM_ModuleName}.psm1"
+        destination="${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}.psm1"
         />
 
     <message>Creating module subdirectories: $PLASTER_PARAM_ModuleDirectories</message>
