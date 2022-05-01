@@ -302,13 +302,6 @@
         condition="$PLASTER_PARAM_Editor -eq 'VSCode'"
         />
 
-    <message>Creating packaging files</message>
-
-    <templateFile
-        source="nuget.config.erb"
-        destination="nuget.config"
-        />
-
     <message>Module generated at [$PLASTER_DestinationPath]</message>
   </content>
 </plasterManifest>
