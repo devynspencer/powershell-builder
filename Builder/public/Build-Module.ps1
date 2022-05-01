@@ -9,7 +9,8 @@ function Build-Module {
         $ModuleName,
 
         # Filepath of new module
-        $Destination = ($env:PSModulePath -split ';')[0],
+        [Parameter(Mandatory)]
+        $Destination,
 
         # New-ModuleManifest parameter
         $Description,
