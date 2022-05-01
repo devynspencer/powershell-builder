@@ -22,7 +22,7 @@ function Build-Module {
         $Author,
 
         # New-ModuleManifest parameter
-        $CompanyName,
+        $CompanyName = '',
 
         # New-ModuleManifest parameter
         $PowerShellVersion = '5.1'
