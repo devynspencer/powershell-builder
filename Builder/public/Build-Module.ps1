@@ -42,6 +42,10 @@ function Build-Module {
         PowerShellVersion = $PowerShellVersion
     }
 
+    if ($PSBoundParameters.ContainsKey('Verbose')) {
+        $PlasterParams.Verbose = $true
+    }
+
     Write-Host -ForegroundColor Cyan "Building module [$ModuleName] at [$DestinationPath] using template [$TemplateName]"
 
     Invoke-Plaster @PlasterParams
