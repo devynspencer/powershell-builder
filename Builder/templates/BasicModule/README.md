@@ -11,6 +11,7 @@ Some parts of this module assume the use of environment variables for the storag
 Specifically, be sure to either set the following environment variables or update the
 configurations accordingly:
 
+
 <%
   if ($PLASTER_PARAM_PackageRegistry -eq 'GitHub') {
     @'
@@ -19,10 +20,10 @@ configurations accordingly:
 - `GITHUB_USERNAME`: The GitHub account name to use for publishing.
 
 - `GITHUB_PACKAGES_TOKEN`: An API token used to authenticate to GitHub packages. See the GitHub documentation on [Automatic token authentication](https://docs.github.com/en/actions/security-guides/automatic-token-authentication) for how to obtain a token.
+
 '@
   }
 %>
-
 <%
   if ($PLASTER_PARAM_Options -contains 'Build') {
     @'
