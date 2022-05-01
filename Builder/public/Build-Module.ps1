@@ -31,7 +31,7 @@ function Build-Module {
     $PlasterParams = @{
         # Plaster
         TemplatePath = Join-Path -Path "$PSScriptRoot\..\templates" -ChildPath $TemplateName
-        DestinationPath = Join-Path $Destination -ChildPath $ModuleName
+        DestinationPath = $Destination
 
         # Module manifest fields
         ModuleName = $ModuleName
