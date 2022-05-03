@@ -290,6 +290,12 @@
         condition="$PLASTER_PARAM_License -eq 'MIT'"
         />
 
+    <file
+        source=".gitignore"
+        destination=""
+        condition="$PLASTER_PARAM_Options -contains 'Git'"
+        />
+
     <templateFile
         source="ScriptAnalyzerSettings.psd1"
         destination=""
