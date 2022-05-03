@@ -1,9 +1,9 @@
 task Analyze {
-    Write-Build Cyan "Performing static code analysis of [$BuildRoot\$ModuleName]"
+    Write-Build Cyan "Performing analysis of [$($BuilderEnv.General.ModuleName):$($BuilderEnv.General.ModuleVersion)]"
 
     $AnalyzerParams = @{
-        Path = "$BuildRoot\$ModuleName"
-        Settings = "$BuildRoot\ScriptAnalyzerSettings.psd1"
+        Path = $BuilderEnv.General.SrcRootDir
+        Settings = $BuilderEnv.Test.ScriptAnalysis.SettingsPath
         Recurse = $true
     }
 
@@ -24,10 +24,13 @@ task Analyze {
         $Errors.foreach({ Write-Build Red ('Rule "{0}" at {1}:{2}' -f $_.RuleName, $_.ScriptName, $_.Line) })
 
         # Save report
-        Write-Build Cyan "Saving report to [$($Config.ScriptAnalyzer.ReportFilePath)]"
+        $ReportId = Get-Date -Format FileDateTime
+        $AnalysisResultsPath = [IO.Path]::Combine($BuilderEnv.General.ReportDir, "PSScriptAnalyzer.$ReportId.xml")
+
+        Write-Build Cyan "Saving report to [$AnalysisResultsPath]"
 
         # TODO: replace with nunit support or whatever
-        $AnalysisResult | Export-Clixml -Path $Config.ScriptAnalyzer.ReportFilePath -Force
+        $AnalysisResult | Export-Clixml -Path $AnalysisResultsPath -Force
 
         # Stop build on errors
         if ($Errors) {

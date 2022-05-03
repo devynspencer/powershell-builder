@@ -34,6 +34,13 @@ $BuilderEnv = [ordered] @{
 
     Test = @{
 
+        ScriptAnalysis = @{
+            # Enable/disable use of PSScriptAnalyzer for static analysis
+            Enabled = $true
+
+            # Path to the PSScriptAnalyzer settings file.
+            SettingsPath = [IO.Path]::Combine($env:BHProjectPath, 'ScriptAnalyzerSettings.psd1')
+        }
     }
 
     Help = @{
