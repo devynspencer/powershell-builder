@@ -297,6 +297,18 @@
         />
 
     <file
+        source=".build.ps1"
+        destination=""
+        condition="$PLASTER_PARAM_Options -contains 'Build'"
+        />
+
+    <file
+        source="build.properties.ps1"
+        destination=""
+        condition="$PLASTER_PARAM_Options -contains 'Build'"
+        />
+
+    <file
         source="vscode-settings.json"
         destination=".vscode\settings.json"
         condition="$PLASTER_PARAM_Editor -eq 'VSCode'"
