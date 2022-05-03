@@ -1,3 +1,5 @@
 **/Configuration.psd1
 
 temp/**/*
+
+*.bak
